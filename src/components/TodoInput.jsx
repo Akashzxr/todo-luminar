@@ -53,7 +53,7 @@ function TodoInput() {
 
 
       <TextareaAutosize
-        placeholder="write a new task"
+        placeholder="write a new task   //press enter to submit"
         className="w-9/12 md:w-10/12 resize-none"
         onChange={(e)=>{setTask(e.target.value);
         }}
