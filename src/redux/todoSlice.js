@@ -19,12 +19,15 @@ export const todoSlicer = createSlice({
         ...state.task.slice(0, action.payload),
         ...state.task.slice(action.payload + 1),
       ];
+    },
+    completeTask : (state,action) => {
+      state.task[action.payload].completed = true;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTask,deleteTask } = todoSlicer.actions
+export const { addTask,deleteTask,completeTask } = todoSlicer.actions
 //export const taskValue = (state) => state.todo.task;
 
 export default todoSlicer.reducer

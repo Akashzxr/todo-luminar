@@ -15,15 +15,17 @@ import { addTask } from '../redux/todoSlice'
 
 function TodoInput() {
 
-  const [FormatedDate, setDate] = useState(0);
+  const date = new Date();
+
+  const [FormatedDate, setDate] = useState(`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);
   const [task,setTask] = useState();
   const dispatch = useDispatch();
 
 
   const handleDate = (e) => {
     const date = new Date(e.$d);
-    const day = date.getDay();
-    const month = date.getMonth();
+    const day = date.getDate();
+    const month = date.getMonth()+1;
     const year = date.getFullYear();
    // console.log(`${day}/${month}/${year}`);
     setDate(`${day}/${month}/${year}`);
@@ -32,7 +34,7 @@ function TodoInput() {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      const data = {todo:task,date:FormatedDate}
+      const data = {todo:task,date:FormatedDate,completed:false}
       dispatch(addTask(data));
       setTask('');
     }
